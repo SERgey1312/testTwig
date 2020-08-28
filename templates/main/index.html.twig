@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block header %}
+    <div style="background: #5eb5e0">
+        {{ parent() }}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <table border="1" align="center" style="font-size: 20px">
+        {% include 'main/tr.html.twig' %}
+        {% for i in arr_learner %}
+            {% if (i.id % 2 == 0)  %}
+                <tr>
+                    <td>{{i.name}}</td><td>{{i.age}}</td><td>{{i.averageScore}}</td><td><a href="{{ path('main') }}">Link to some route</a></td>
+                </tr>
+            {% else %}
+                <tr style="background: #111111; color: #DDDDDD">
+                    <td>{{i.name}}</td><td>{{i.age}}</td><td>{{i.averageScore}}</td><td><a href="{{ path('main') }}">Link to some route</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+
+    </table>
+{% endblock %}
+{% block footer %}
+    <div style="background: #5eb5e0">
+        {{ parent() }}
+        <div style="color: #C82829; font-weight: bold; font-size: 25px">
+            <label>Дата: </label>
+            {{ date|date("d.m.Y") }}
+        </div>
+    </div>
+{% endblock %}
